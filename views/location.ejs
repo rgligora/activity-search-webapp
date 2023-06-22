@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <script type="module" src="/maps.js"></script>
+    <title>surPRIZE.me</title>
+</head>
+<body>
+    <div class="container">
+        <h1>surPRIZED <%=location%></h1>
+        <button type="submit" onclick="redirectTo('/')">Search again</button>
+        <div class="activities">
+            <%for(activity of activities){%>
+                <div class="activity">
+                    <img src="<%=activity.photoUrl%>" alt="<%=activity.place_id%>">
+                    <div class="info">
+                        <div class="activity-name"><%=activity.name%></div>
+                        <div class="activity-address"><%=activity.formatted_address%></div>
+                        <div class="activity-rating"><%=activity.rating%></div>
+                    </div>
+                </div>
+            <%}%>
+        </div>
+        <div id="map"></div>
+      </div>
+    
+      
+      <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+        ({key: "AIzaSyCIsZLWmx9jxkljcExp54p2tHnynOF1ydU", v: "weekly"});</script>
+        <script>
+            function redirectTo(path) {
+              window.location.href = path;
+            }
+          </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIsZLWmx9jxkljcExp54p2tHnynOF1ydU&libraries=places"></script>
+  </body>
+</html>
